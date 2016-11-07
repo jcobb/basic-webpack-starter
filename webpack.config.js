@@ -10,6 +10,19 @@ try {
   require('os').networkInterfaces = () => ({});
 }
 
+console.log(process.env.npm_config_build_commit);
+
+const NODE_ENV = (
+  process.env.NODE_ENV
+  || (
+    process.argv.indexOf('--dev') > -1
+      ? 'development'
+      : 'production'
+  )
+);
+
+const isProduction = (NODE_ENV === 'production');
+
 module.exports = {
 
   // entry
@@ -18,8 +31,10 @@ module.exports = {
   // app: the entry point for the application code
   entry: {
     vendor: [
+      'babel-polyfill',
       'react', 'react-dom',
-      'redux', 'react-redux', 'redux-thunk'
+      'redux', 'react-redux', 'redux-thunk', 'redux-responsive',
+      'lodash', 'isomorphic-fetch'
     ],
     app: './src/index.js'
   },
@@ -59,7 +74,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.ejs',
       hash: true
-    })
+    }),
+
+    // ompitize the code for production
+    // https://webpack.github.io/docs/list-of-plugins.html#optimize
+    ...(
+      isProduction ? [
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.DedupePlugin()
+      ] : []
+    )
   ],
 
 
@@ -73,7 +97,6 @@ module.exports = {
   // loaders themselves can be configured to work differently by passing parameters.
   module: {
     loaders: [
-      // { test: /\.html$/, loader: "file?name=[name].[ext]" },
       // transform all js using babel. see bablrc for babel presets
       { test: /\.js$/, exclude: /node_modules/, loader: "babel" },
       // process all css as css modules, use the ExtractTextPlugin to extract results to a .css file
@@ -82,13 +105,23 @@ module.exports = {
   },
 
   // resolve
-  // extensions: the file extensions are automatically resolved on import
   // ===========================================================================
+  // extensions: the file extensions are automatically resolved on import
   // root: allow absolute path imports from the /src dir
   resolve: {
     extensions: ['', '.js', '.jsx'],
     root: [
       path.resolve('./src')
     ]
+  },
+
+  // devtool
+  // ===========================================================================
+  // http://webpack.github.io/docs/configuration.html#devtool
+  devtool: isProduction ? '' : '#inline-source-map',
+
+  devServer: {
+    contentBase: './build'
   }
+
 };

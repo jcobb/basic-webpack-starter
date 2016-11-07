@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
+    "clean": "rimraf ./build",
     "win-start": "webpack-serve --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +30,7 @@
     "html-webpack-plugin": "^2.24.1",
     "html-webpack-template": "^5.4.1",
     "read-package-json": "^2.0.4",
+    "rimraf": "^2.5.4",
     "script-loader": "^0.7.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
@@ -36,13 +38,14 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.13.0",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.16.6",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
-    "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.16.0",
     "redux-logger": "^2.6.1",
+    "redux-responsive": "^3.1.5",
     "redux-thunk": "^2.1.0"
   }
 }
