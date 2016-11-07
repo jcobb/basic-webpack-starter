@@ -10,8 +10,6 @@ try {
   require('os').networkInterfaces = () => ({});
 }
 
-console.log(process.env.npm_config_build_commit);
-
 const NODE_ENV = (
   process.env.NODE_ENV
   || (
@@ -98,7 +96,7 @@ module.exports = {
   module: {
     loaders: [
       // transform all js using babel. see bablrc for babel presets
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel" },
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel!eslint" },
       // process all css as css modules, use the ExtractTextPlugin to extract results to a .css file
       { test: /\.css$/, loader: ETP.extract('style','css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]') }
     ]
