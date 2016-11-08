@@ -29,6 +29,7 @@ module.exports = {
   // app: the entry point for the application code
   entry: {
     vendor: [
+      'webpack/hot/only-dev-server',
       'babel-polyfill',
       'react', 'react-dom',
       'redux', 'react-redux', 'redux-thunk', 'redux-responsive',
@@ -80,7 +81,9 @@ module.exports = {
       isProduction ? [
         new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.DedupePlugin()
-      ] : []
+      ] : [
+        new webpack.HotModuleReplacementPlugin()
+      ]
     )
   ],
 
@@ -95,8 +98,8 @@ module.exports = {
   // loaders themselves can be configured to work differently by passing parameters.
   module: {
     loaders: [
-      // transform all js using babel. see bablrc for babel presets
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel!eslint" },
+      // transform all js using babel. see bablrc for babel presets inc. hot reloading
+      { test: /\.js$/, exclude: /node_modules/, loaders: ["babel", "eslint"] },
       // process all css as css modules, use the ExtractTextPlugin to extract results to a .css file
       { test: /\.css$/, loader: ETP.extract('style','css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]') }
     ]

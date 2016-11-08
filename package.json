@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --dev",
+    "start": "webpack-dev-server --progress --inline --dev",
+    "start:win": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --watch-poll --progress --inline --dev",
     "clean": "rimraf ./dist"
   },
   "author": "",
@@ -28,6 +29,7 @@
     "file-loader": "~0.9.0",
     "html-webpack-plugin": "^2.24.1",
     "html-webpack-template": "^5.4.1",
+    "react-hot-loader": "^3.0.0-beta.6",
     "read-package-json": "^2.0.4",
     "rimraf": "^2.5.4",
     "script-loader": "^0.7.0",
