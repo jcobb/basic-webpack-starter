@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --progress --inline --hot",
-    "clean": "rimraf ./dist"
+    "clean": "rimraf ./dist",
+    "build:dev": "webpack --env=DEVELOPMENT --progress --profile --colors",
+    "build:dist": "webpack --env=PRODUCTION --progress --profile --colors"
   },
   "author": "",
   "license": "ISC",

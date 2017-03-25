@@ -2,22 +2,23 @@ const {
   entry,
   output,
   jsLoaders,
-  cssModules,
+  cssLoaders,
   plugins,
 } = require('./webpack');
 
-module.exports = {
+const buildConfig = (env) => ({
   entry: entry(),
-  output: output(),
+  output: output(__dirname),
   module: {
     rules: [
       jsLoaders(),
-      cssModules(),
+      cssLoaders(),
     ],
   },
-  plugins: plugins(),
+  plugins: plugins(env),
   resolve: {
     extensions: [".js", ".json", ".jsx", ".css"],
   },
-  devtool: "source-map",
-};
+});
+
+module.exports = buildConfig;
