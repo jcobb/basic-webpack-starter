@@ -1,6 +1,6 @@
 # Basic Webpack Starter
 
-A basic Webpack & React starter project with development + production builds.
+A basic Webpack / React / Redux starter project with development + production builds.
 
 ## Usage
 
