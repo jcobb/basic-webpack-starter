@@ -1,6 +1,6 @@
 # Basic Webpack Starter
 
-A basic Webpack / React / Redux starter project with development + production builds.
+A basic Webpack / React / Redux starter project with development + production builds and Jest / Enzyme test framework.
 
 ## Usage
 
