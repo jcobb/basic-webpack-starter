@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build && node ./server/index.js",
+    "test": "jest /src --coverage",
     "start:dev": "webpack-dev-server --env=development",
     "clean": "rimraf ./dist",
     "build": "npm run clean && webpack --env=production --progress --profile --colors"
@@ -14,6 +15,7 @@
   "devDependencies": {
     "babel-core": "^6.13.2",
     "babel-eslint": "^7.2.1",
+    "babel-jest": "^19.0.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-es2015": "^6.13.2",
@@ -21,6 +23,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "babel-preset-stage-2": "^6.13.0",
     "css-loader": "^0.23.1",
+    "enzyme": "^2.8.0",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-loader": "^1.7.0",
@@ -32,8 +35,14 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^2.28.0",
     "html-webpack-template": "^6.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^19.0.2",
+    "jest-css-modules": "^1.1.0",
     "postcss-loader": "^0.9.1",
+    "react-addons-test-utils": "^15.4.2",
     "react-hot-loader": "^3.0.0-beta.6",
+    "react-test-renderer": "^15.4.2",
+    "redux-mock-store": "^1.2.2",
     "rimraf": "^2.6.1",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.25",
@@ -52,5 +61,10 @@
     "redux-logger": "^3.0.0",
     "redux-responsive": "^4.1.1",
     "redux-thunk": "^2.2.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   }
 }

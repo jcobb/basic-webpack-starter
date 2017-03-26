@@ -8,13 +8,14 @@ class App extends Component {
   }
 
   render() {
-    const hasAppMounted = this.props.appState.appIdle;
+    const className = this.props.appState.appIdle
+      ? styles.appHasMounted
+      : styles.appNotMounted;
 
     return (
       <Provider store={this.props.store}>
-        <div className={styles.app}>
+        <div className={className}>
           <h2>Hello, world</h2>
-          <p>Has app mounted? {`${hasAppMounted ? 'Yes' : 'No'}`}</p>
         </div>
       </Provider>
     );
