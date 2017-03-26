@@ -10,8 +10,4 @@ A basic Webpack / React / Redux starter project with development + production bu
 
 `npm start` (production build + local express server)
 
-
-## TODO
-
-- Testing
-- Dynamic bundle loading for polyfills
+`npm test` (run jest test suite)
