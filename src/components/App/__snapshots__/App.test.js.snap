@@ -5,7 +5,8 @@ exports[`App should render correctly 1`] = `
   className="appNotMounted"
 >
   <h2>
-    Hello, world
+    Hello
+    , world
   </h2>
 </div>
 `;

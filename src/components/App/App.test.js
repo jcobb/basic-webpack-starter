@@ -7,12 +7,17 @@ import App from './App';
 const mockStore = reduxMockStore([]);
 const store = mockStore();
 const setAppIdle = jest.fn();
+const fetchWelcomeMessage = jest.fn();
 
 const props = {
   setAppIdle,
+  fetchWelcomeMessage,
   store,
   appState: {
     appIdle: false
+  },
+  uiState: {
+    message: "Hello"
   },
 };
 
