@@ -8,7 +8,8 @@
     "test": "jest /src --coverage",
     "start:dev": "webpack-dev-server --env=development",
     "clean": "rimraf ./dist",
-    "build": "npm run clean && webpack --env=production --progress --profile --colors"
+    "build": "npm run clean && webpack --env=production --progress --profile --colors",
+    "deploy": "npm run build && npm run test && firebase deploy"
   },
   "author": "",
   "license": "ISC",
@@ -51,6 +52,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
+    "firebase": "^3.7.3",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "react": "^15.4.2",

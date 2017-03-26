@@ -17,6 +17,22 @@ export const appStateReducer = (appState = initialAppState, action) => {
   }
 };
 
+const initialUiState = {
+  message: '',
+};
+
+export const uiStateReducer = (uiState = initialUiState, action) => {
+  switch (action.type) {
+    case ACTION_TYPES.SET_WELCOME_MESSAGE:
+      return {
+        message: action.message,
+      };
+    default:
+      return uiState;
+  }
+};
+
 export default combineReducers({
   appState: appStateReducer,
+  uiState: uiStateReducer,
 });

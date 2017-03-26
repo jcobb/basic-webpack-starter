@@ -18,8 +18,9 @@
  */
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { ENV } = require('./constants');
 
-const jsLoaders = () => ({
+const jsLoaders = (env) => ({
   test: [
     /\.js$/,
     /\.jsx$/,
@@ -27,7 +28,7 @@ const jsLoaders = () => ({
   exclude: '/node_modules/',
   use: [
     "babel-loader",
-    "eslint-loader",
+    ...(env === ENV.PRODUCTION ? ["eslint-loader"] : []),
   ],
 });
 

@@ -5,6 +5,7 @@ import styles from './App.css';
 class App extends Component {
   componentDidMount() {
     this.props.setAppIdle();
+    this.props.fetchWelcomeMessage();
   }
 
   render() {
@@ -12,10 +13,12 @@ class App extends Component {
       ? styles.appHasMounted
       : styles.appNotMounted;
 
+    const message = this.props.uiState.message || 'Nothing';
+
     return (
       <Provider store={this.props.store}>
         <div className={className}>
-          <h2>Hello, world</h2>
+          <h2>{message}, world</h2>
         </div>
       </Provider>
     );
@@ -25,11 +28,15 @@ class App extends Component {
 App.propTypes = {
   // methods
   setAppIdle: PropTypes.func.isRequired,
+  fetchWelcomeMessage: PropTypes.func.isRequired,
 
   // props
   store: PropTypes.any.isRequired,
   appState: PropTypes.shape({
     appIdle: PropTypes.boolean,
+  }).isRequired,
+  uiState: PropTypes.shape({
+    message: PropTypes.string,
   }).isRequired,
 };
 
