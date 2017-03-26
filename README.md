@@ -13,6 +13,5 @@ A basic Webpack & React starter project with development + production builds.
 
 ## TODO
 
-- Redux
 - Testing
 - Dynamic bundle loading for polyfills
