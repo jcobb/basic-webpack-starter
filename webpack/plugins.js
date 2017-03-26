@@ -31,7 +31,7 @@ module.exports = (env) => ([
   // creates an index.html page using the template provided
   // will automatically include all bundles and hash them for cache busting
   new HtmlWebpackPlugin({
-    template: './src/index.ejs',
+    template: './index.ejs',
     hash: true
   }),
 
@@ -44,7 +44,16 @@ module.exports = (env) => ([
     'process.env.NODE_ENV': JSON.stringify(env),
   }),
 
-  //production only past this point
+  // development only
+  ... (env === ENV.DEVELOPMENT ? [
+    // enable HMR globally
+    new webpack.HotModuleReplacementPlugin(),
+
+    // prints more readable module names in the browser console on HMR updates
+    new webpack.NamedModulesPlugin(),
+  ] : []),
+
+  // production only past this point
   ...(env == ENV.PRODUCTION ? [
     new webpack.LoaderOptionsPlugin({
         minimize: true,
@@ -63,4 +72,4 @@ module.exports = (env) => ([
         comments: false
     }),
   ] : [])
-])
+]);

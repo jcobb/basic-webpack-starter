@@ -2,8 +2,16 @@
  * entry point configuration for webpack
  * https://webpack.js.org/configuration/entry-context/#entry
  */
+const { ENV } = require('./constants');
 
 const devtools = [
+  // activate HMR for React
+  'react-hot-loader/patch',
+  // bundle the client for webpack-dev-server
+  // and connect to the provided endpoint
+  'webpack-dev-server/client?http://localhost:8080',
+  // bundle the client for hot reloading
+  // only- means to only hot reload for successful updates
   'webpack/hot/only-dev-server',
 ];
 
@@ -25,10 +33,12 @@ const utils = [
   'lodash',
 ];
 
-module.exports = () => ({
-  app: './src/index.js',
+module.exports = (env) => ({
+  app: [
+    ...(env == ENV.DEVELOPMENT ? devtools : []),
+    './index.js'
+  ],
   vendor: [
-    ...devtools,
     ...polyfills,
     ...libs,
     ...utils,
