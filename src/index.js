@@ -1,22 +1,25 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import App from './components/App/App';
+import { AppContainer as HotLoader } from 'react-hot-loader';
+import AppContainer from './components/App/AppContainer';
+import createStore from './store/createStore';
+
+const store = createStore();
 
 const render = (Component) => {
   ReactDom.render(
-    <AppContainer>
-      <Component />
-    </AppContainer>,
+    <HotLoader>
+      <Component store={store} />
+    </HotLoader>,
     document.getElementById('app'),
   );
 };
 
-render(App);
+render(AppContainer);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./components/App/App', () => {
-    render(App);
+  module.hot.accept('./components/App/AppContainer', () => {
+    render(AppContainer);
   });
 }
