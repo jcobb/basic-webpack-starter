@@ -1,3 +1,10 @@
+const { resolve } = require('path');
+
+const {
+  PATHS,
+  ENV,
+} = require('./webpack/constants');
+
 const {
   entry,
   output,
@@ -7,8 +14,18 @@ const {
 } = require('./webpack');
 
 const buildConfig = (env) => ({
-  entry: entry(),
+  entry: entry(env),
   output: output(__dirname),
+  context: resolve(__dirname, PATHS.SOURCE_DIR),
+  resolve: {
+    extensions: [".js", ".json", ".jsx", ".css"],
+  },
+  devtool: (env === ENV.DEVELOPMENT ? 'inline-source-map' : ''),
+  devServer: {
+    hot: true,
+    contentBase: resolve(__dirname, PATHS.CONTENT_BASE),
+    publicPath: '/',
+  },
   module: {
     rules: [
       jsLoaders(),
@@ -16,9 +33,6 @@ const buildConfig = (env) => ({
     ],
   },
   plugins: plugins(env),
-  resolve: {
-    extensions: [".js", ".json", ".jsx", ".css"],
-  },
 });
 
 module.exports = buildConfig;

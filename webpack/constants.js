@@ -1,6 +1,11 @@
 module.exports = {
   ENV: {
-    PRODUCTION: 'PRODUCTION',
-    DEVELOPMENT: 'DEVELOPMENT',
+    PRODUCTION: 'production',
+    DEVELOPMENT: 'development',
+  },
+  PATHS: {
+    CONTENT_BASE: 'dist',
+    PUBLIC_PATH: '/',
+    SOURCE_DIR: 'src',
   }
 }

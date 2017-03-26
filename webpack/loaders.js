@@ -17,29 +17,25 @@
  * to transform it before you add it to the bundle".
  */
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const jsLoaders = () => ({
-  test: /\.js?$/,
+  test: [
+    /\.js$/,
+    /\.jsx$/,
+  ],
   exclude: '/node_modules/',
   use: [
-    {
-      loader: "babel-loader",
-      options: {
-        presets: ["es2015"]
-      },
-    },
-    {
-      loader: "eslint-loader",
-    }
+    "babel-loader",
+    "eslint-loader",
   ],
 });
 
 const cssLoaders = () => ({
   test: /\.css$/,
-  use: [
-    {
-      loader: 'style-loader',
-    },
-    {
+  use: ExtractTextPlugin.extract({
+    fallback: "style-loader",
+    use: {
       loader: 'css-loader',
       options: {
         modules: true,
@@ -47,7 +43,7 @@ const cssLoaders = () => ({
         localIdentName: '[name]__[local]___[hash:base64:5]',
       },
     },
-  ],
+  }),
 });
 
 module.exports.jsLoaders = jsLoaders;
