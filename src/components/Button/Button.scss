@@ -1,0 +1,61 @@
+@import '../../scss/global.scss';
+
+$themes: (
+  primary: (
+    background: $primary-color,
+    color: $primary-color-text
+  ),
+  dark: (
+    background: $primary-color-dark,
+    color: $primary-color-text
+  ),
+  light: (
+    background: $primary-color-light,
+    color: $primary-color-dark
+  ),
+  none: (
+    background: #FFFFFF,
+    color: $primary-color-dark
+  )
+);
+
+.button {
+  position: relative;
+  padding: 10px;
+  outline: none;
+  transition: .2s;
+  border: 1px solid;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.rounded {
+  border-radius: 50%;
+  line-height: 1;
+  font-size: 0;
+}
+
+@each $theme-name, $theme in $themes {
+    $background: map-get($theme, 'background');
+    $color: map-get($theme, 'color');
+
+    .#{$theme-name} {
+      background: $background;
+      color: $color;
+      border-color: $background;
+
+      &:focus {
+        border-color: darken($background, 10%);
+      }
+
+      &:hover {
+        background: darken($background, 10%);
+        border-color: darken($background, 10%);
+      }
+
+      &:active {
+        background: darken($background, 20%);
+      }
+    }
+}
