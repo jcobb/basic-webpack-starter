@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import { AppContainer as HotLoader } from 'react-hot-loader';
 import AppContainer from './components/App/AppContainer';
 import createStore from './store/createStore';
+import './scss/reset.scss';
 
 const store = createStore();
 
