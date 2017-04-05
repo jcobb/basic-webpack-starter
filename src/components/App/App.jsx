@@ -9,10 +9,9 @@ import styles from './App.scss';
 
 class App extends Component {
   componentDidMount() {
-    this.props.setAppIdle();
+    console.info(`App interactive (ms) ${Math.round(performance.now())}`);
 
-    // TODO implement this properly
-    console.timeEnd('appIdle');
+    this.props.setAppIdle();
   }
 
   render() {

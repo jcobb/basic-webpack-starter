@@ -1,0 +1,9 @@
+@mixin button {
+  position: relative;
+  padding: 10px;
+  outline: none;
+  transition: .2s;
+  border: 1px solid;
+  cursor: pointer;
+  font-size: 14px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from '../../Icon/Icon';
 import Button from '../../Button/Button';
+import Link from '../../Link/Link';
 
 import {
   THEMES,
@@ -45,6 +46,29 @@ const SandBox = () => (
     >
       <Icon icon={Icon.ICONS.REFRESH} size={28} />
     </Button>
+
+    <Link
+      href="http://google.com"
+      className={styles.link}
+    >
+        Google.com
+    </Link>
+
+    <Link
+      href="http://google.com"
+      className={styles.link}
+      display="underline"
+    >
+      Google.com
+    </Link>
+
+    <Link
+      href="http://google.com"
+      className={styles.link}
+      display="button"
+    >
+      Google.com
+    </Link>
 
   </div>
 );

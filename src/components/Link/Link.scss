@@ -1,0 +1,13 @@
+@import '../../scss/global.scss';
+
+.link {
+  text-decoration: none;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.button {
+  @include button;
+}

@@ -20,14 +20,7 @@ $themes: (
 );
 
 .button {
-  position: relative;
-  padding: 10px;
-  outline: none;
-  transition: .2s;
-  border: 1px solid;
-  margin-right: 10px;
-  cursor: pointer;
-  font-size: 14px;
+  @include button;
 }
 
 .rounded {

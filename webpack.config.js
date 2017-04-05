@@ -24,7 +24,7 @@ const buildConfig = (env) => ({
   devServer: {
     hot: true,
     contentBase: resolve(__dirname, PATHS.CONTENT_BASE),
-    publicPath: '/',
+    publicPath: PATHS.PUBLIC_PATH,
   },
   module: {
     rules: [
