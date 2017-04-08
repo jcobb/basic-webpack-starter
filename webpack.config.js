@@ -9,16 +9,16 @@ const {
   entry,
   output,
   jsLoaders,
-  cssLoaders,
   plugins,
+  cssLoaders,
 } = require('./webpack');
 
-const buildConfig = (env) => ({
+const buildConfig = env => ({
   entry: entry(env),
   output: output(__dirname),
   context: resolve(__dirname, PATHS.SOURCE_DIR),
   resolve: {
-    extensions: [".js", ".json", ".jsx", ".css"],
+    extensions: ['.js', '.json', '.jsx', '.css'],
   },
   devtool: (env === ENV.DEVELOPMENT ? 'inline-source-map' : ''),
   devServer: {

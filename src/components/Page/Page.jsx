@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import SandBox from './SandBox/SandBox';
 import {
   PAGES,
@@ -10,8 +11,7 @@ const PAGE_HANDLERS = {
 
 const Page = (props) => {
   const Handler = PAGE_HANDLERS[props.page];
-
-  return <Handler {...props} />;
+  return <Handler />;
 };
 
 Page.propTypes = {

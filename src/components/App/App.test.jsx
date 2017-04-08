@@ -4,6 +4,11 @@ import renderer from 'react-test-renderer';
 import { mount, shallow } from 'enzyme';
 import App from './App';
 
+jest.mock('../Page/Page', () => 'Page');
+jest.mock('../../utils/log', () => ({
+  info: () => {},
+}));
+
 const mockStore = reduxMockStore([]);
 const store = mockStore();
 const setAppIdle = jest.fn();
@@ -12,13 +17,15 @@ const props = {
   setAppIdle,
   store,
   appState: {
-    appIdle: false
+    appIdle: false,
   },
 };
 
-describe('App',  ()  => {
+describe('App', () => {
   beforeEach(() => {
     setAppIdle.mockClear();
+
+    global.performance = { now: () => {} };
   });
 
   it('should render correctly', () => {
@@ -28,7 +35,7 @@ describe('App',  ()  => {
   });
 
   it('should setAppIdle on mount', () => {
-    const component = mount(<App {...props} />);
+    mount(<App {...props} />);
 
     expect(setAppIdle).toHaveBeenCalledTimes(1);
   });
@@ -44,6 +51,6 @@ describe('App',  ()  => {
     const component = shallow(<App {...newProps} />);
     const wrapper = component.find('div');
 
-    expect(wrapper.hasClass('appHasMounted')).toEqual(true);
-  })
+    expect(wrapper).toHaveClassName('appHasMounted');
+  });
 });

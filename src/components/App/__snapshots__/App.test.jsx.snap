@@ -4,8 +4,8 @@ exports[`App should render correctly 1`] = `
 <div
   className="appNotMounted"
 >
-  <h2>
-    Hello, world
-  </h2>
+  <Page
+    page="SANDBOX"
+  />
 </div>
 `;
