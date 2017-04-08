@@ -1,3 +1,5 @@
+export const APP_ID = 'APP';
+
 export const ACTION_TYPES = {
   SET_APP_IDLE: 'SET_APP_IDLE',
 };

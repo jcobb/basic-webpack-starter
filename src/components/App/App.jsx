@@ -1,15 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import Page from '../Page/Page';
+
 import {
   PAGES,
 } from '../../constants/constants';
+
+import {
+  log,
+} from '../../utils';
 
 import styles from './App.scss';
 
 class App extends Component {
   componentDidMount() {
-    console.info(`App interactive (ms) ${Math.round(performance.now())}`);
+    // at commit 49dbfc8 (5/4/2017): ~200ms
+    log.info(`App interactive (ms) ${Math.round(performance.now())}`);
 
     this.props.setAppIdle();
   }

@@ -6,7 +6,14 @@ import createStore from './store/createStore';
 import './scss/reset.scss';
 import './scss/base.scss';
 
+import {
+  log,
+} from './utils';
+
 const store = createStore();
+
+window.requestIdleCallback(() =>
+  log.info(`Request idle (ms) ${Math.round(performance.now())}`));
 
 const render = (Component) => {
   ReactDom.render(
