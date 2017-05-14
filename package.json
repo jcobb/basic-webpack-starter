@@ -8,7 +8,8 @@
     "test": "jest /src --coverage",
     "start:dev": "webpack-dev-server --env=development",
     "clean": "rimraf ./dist",
-    "build": "npm run clean && webpack --env=production --progress --profile --colors"
+    "build": "npm run clean && webpack --env=production --progress --profile --colors",
+    "lint": "eslint --ext .jsx,.js ./src"
   },
   "author": "",
   "license": "ISC",
