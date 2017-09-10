@@ -1,50 +1,52 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+
+import Header from '../Header/Header';
 import Page from '../Page/Page';
+import ModalContainer from '../Modal/ModalContainer';
 
 import {
-  PAGES,
+    PAGES,
 } from '../../constants/constants';
 
 import {
-  log,
+    log,
 } from '../../utils';
 
 import styles from './App.scss';
 
 class App extends Component {
-  componentDidMount() {
-    // at commit 49dbfc8 (5/4/2017): ~200ms
-    log.info(`App interactive (ms) ${Math.round(performance.now())}`);
+    componentDidMount() {
+        // at commit 49dbfc8 (5/4/2017): ~200ms
+        log.info(`App interactive (ms) ${Math.round(performance.now())}`);
 
-    this.props.setAppIdle();
-  }
+        this.props.setAppIdle();
+    }
 
-  render() {
-    const className = this.props.appState.appIdle
-      ? styles.appHasMounted
-      : styles.appNotMounted;
-
-    return (
-      <Provider store={this.props.store}>
-        <div className={className}>
-          <Page page={PAGES.SANDBOX} />
-        </div>
-      </Provider>
-    );
-  }
+    render() {
+        return (
+            <Provider store={this.props.store}>
+                <div className={styles.wrapper}>
+                    <Header openModal={this.props.openModal} />
+                    <Page page={PAGES.SANDBOX} />
+                    <ModalContainer />
+                </div>
+            </Provider>
+        );
+    }
 }
 
 App.propTypes = {
-  // methods
-  setAppIdle: PropTypes.func.isRequired,
+    // methods
+    setAppIdle: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
 
-  // props
-  store: PropTypes.any.isRequired,
-  appState: PropTypes.shape({
-    appIdle: PropTypes.boolean,
-  }).isRequired,
+    // props
+    store: PropTypes.any.isRequired,
+    appState: PropTypes.shape({
+        appIdle: PropTypes.boolean,
+    }).isRequired,
 };
 
 export default App;

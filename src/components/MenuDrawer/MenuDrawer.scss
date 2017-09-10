@@ -1,0 +1,19 @@
+@import '../../scss/global.scss';
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 70%;
+    background: #ffffff;
+    transform: translateX(-105%);
+    will-change: transform;
+    animation: slideInLeft 330ms cubic-bezier(.4,0,.2,1);
+    animation-fill-mode: forwards;
+    box-shadow: $standard-shadow;
+}
+
+.isClosing {
+    animation: slideOutLeft 175ms cubic-bezier(.4,0,.2,1);
+}

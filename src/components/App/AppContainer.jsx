@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import App from './App';
 import {
-  setAppIdle,
+    setAppIdle,
+    openModal,
 } from '../../store/actions';
 
 const mapStateToProps = state => ({
-  appState: state.appState,
+    appState: state.appState,
 });
 
 const AppContainer = connect(
-  mapStateToProps,
-  {
-    setAppIdle,
-  },
+    mapStateToProps,
+    {
+        setAppIdle,
+        openModal,
+    },
 )(App);
 
 

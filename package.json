@@ -1,4 +1,4 @@
-  {
+{
   "name": "basic-starter-kit",
   "version": "1.0.0",
   "description": "",
@@ -54,6 +54,7 @@
     "webpack-dev-server": "^2.1.0-beta.0"
   },
   "dependencies": {
+    "@material/animation": "^0.3.1",
     "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
     "isomorphic-fetch": "^2.2.1",

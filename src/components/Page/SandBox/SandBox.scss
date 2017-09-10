@@ -1,3 +1,48 @@
 .sandbox {
   padding: 40px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.91);
+  z-index: 1;
+  transform: translateZ(0);
+}
+
+
+.stripeOne {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-transform: skewY(-8deg);
+    -ms-transform: skewY(-8deg);
+    transform: skewY(-8deg);
+    -webkit-transform-origin: 0;
+    -ms-transform-origin: 0;
+    transform-origin: 0;
+    background: linear-gradient(-150deg,#25b57f 0%,#acf0b5 70%);
+}
+
+.stripeTwo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35%;
+    overflow: hidden;
+    background: linear-gradient(150deg,rgba(172,240,181,0) 40%,#acf0b5 70%);
+}
+
+.stripeThree {
+    height: 10vh;
+    overflow: hidden;
+    -webkit-transform: skewY(-8deg);
+    -ms-transform: skewY(-8deg);
+    transform: skewY(-8deg);
+    -webkit-transform-origin: 0;
+    -ms-transform-origin: 0;
+    transform-origin: 0;
+    background: linear-gradient(-150deg,rgba(255,255,255,0) 40%,#ddecf7 70%);
 }

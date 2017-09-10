@@ -1,0 +1,40 @@
+@import '../../scss/global.scss';
+
+.flex {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.wrapper {
+    height: auto;
+    width: 100vw;
+    position: fixed;
+    overflow: hidden;
+    box-shadow: $standard-shadow;
+    background: $primary-color;
+    color: $primary-color-text;
+    z-index: 1;
+}
+
+.appBar {
+    @extend .flex;
+    height: $appbar-height;
+}
+
+.extended {
+    @extend .flex;
+    height: $header-extended-height;
+    padding-left: $header-extended-height;
+    font-size: 30px;
+    font-weight: 300;
+
+    .title {
+        margin-left: 8px;
+    }
+}
+
+.toolBar {
+    @extend .flex;
+    height: $toolbar-height;
+}

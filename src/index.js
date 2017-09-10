@@ -7,28 +7,28 @@ import './scss/reset.scss';
 import './scss/base.scss';
 
 import {
-  log,
+    log,
 } from './utils';
 
 const store = createStore();
 
 window.requestIdleCallback(() =>
-  log.info(`Request idle (ms) ${Math.round(performance.now())}`));
+    log.info(`Request idle (ms) ${Math.round(performance.now())}`));
 
 const render = (Component) => {
-  ReactDom.render(
-    <HotLoader>
-      <Component store={store} />
-    </HotLoader>,
-    document.getElementById('app'),
-  );
+    ReactDom.render(
+        <HotLoader>
+            <Component store={store} />
+        </HotLoader>,
+        document.getElementById('app'),
+    );
 };
 
 render(AppContainer);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./components/App/AppContainer', () => {
-    render(AppContainer);
-  });
+    module.hot.accept('./components/App/AppContainer', () => {
+        render(AppContainer);
+    });
 }

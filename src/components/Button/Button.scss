@@ -14,8 +14,8 @@ $themes: (
     color: $primary-color-dark
   ),
   none: (
-    background: #FFFFFF,
-    color: $primary-color-dark
+    background: transparent,
+    color: currentColor
   )
 );
 

@@ -1,0 +1,18 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: rgba(0,0,0,0);
+    will-change: background;
+    transition: 330ms background;
+}
+
+.isOpen {
+    background: rgba(0,0,0,0.5);
+    pointer-events: all;
+    transition: 175ms background;
+}
