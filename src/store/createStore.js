@@ -7,15 +7,15 @@ const isDevelopment = process.env.NODE_ENV === ENVIRONMENTS.DEVELOPMENT;
 let composeEnhancers = compose;
 
 if (isDevelopment) {
-  /* eslint-disable no-underscore-dangle */
-  composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  /* eslint-enable no-underscore-dangle */
+    /* eslint-disable no-underscore-dangle */
+    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    /* eslint-enable no-underscore-dangle */
 }
 
 export default (data = {}) => (
-  createStore(
-    reducers,
-    data,
-    composeEnhancers(applyMiddleware(reduxThunk)),
-  )
+    createStore(
+        reducers,
+        data,
+        composeEnhancers(applyMiddleware(reduxThunk)),
+    )
 );

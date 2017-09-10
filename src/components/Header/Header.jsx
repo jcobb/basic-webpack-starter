@@ -5,7 +5,6 @@ import React, { PropTypes } from 'react';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import MenuDrawer from '../MenuDrawer/MenuDrawer';
-import Pattern from '../Pattern/Pattern';
 
 // styles
 import styles from './Header.scss';
