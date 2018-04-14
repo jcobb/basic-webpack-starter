@@ -6,9 +6,7 @@ import createStore from './store/createStore';
 import './scss/reset.scss';
 import './scss/base.scss';
 
-import {
-    log,
-} from './utils';
+import { log } from './utils';
 
 const store = createStore();
 

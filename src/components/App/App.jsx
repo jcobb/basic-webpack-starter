@@ -14,7 +14,7 @@ import {
     log,
 } from '../../utils';
 
-import styles from './App.scss';
+import './App.scss';
 
 class App extends Component {
     componentDidMount() {
@@ -27,7 +27,7 @@ class App extends Component {
     render() {
         return (
             <Provider store={this.props.store}>
-                <div className={styles.wrapper}>
+                <div>
                     <Header openModal={this.props.openModal} />
                     <Page page={PAGES.SANDBOX} />
                     <ModalContainer />

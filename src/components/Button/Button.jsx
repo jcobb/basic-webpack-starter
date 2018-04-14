@@ -29,6 +29,7 @@ const Button = (props) => {
             autoFocus={props.autofocus}
         >
             {props.children}
+            {'find me'}
         </button>
     );
 };
