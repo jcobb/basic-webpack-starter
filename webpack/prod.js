@@ -1,3 +1,4 @@
+const fsExtra = require('fs-extra');
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -25,9 +26,16 @@ const sassLoaders = {
     ],
 };
 
-module.exports = {
+const clientConfig = {
     entry: {
         app: './src/index.js',
+        utils: [
+            './src/utils/index.js',
+            './src/constants/constants.js',
+            './src/store/actions.js',
+            './src/store/createStore.js',
+            './src/store/reducers.js',
+        ],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -75,12 +83,35 @@ module.exports = {
                 },
             },
         },
-        runtimeChunk: {
-            name: 'manifest',
-        },
     },
-    // performance: {
-    //     hints: 'error', // "error" or false are valid too
-    //     maxAssetSize: 1000, // in bytes
-    // },
 };
+
+// function compileClientWithWebpack() {
+//     return new Promise((resolve, reject) => {
+//         const webCompiler = webpack(clientConfig);
+//
+//         webCompiler.run((err, stats) => {
+//             if (err) {
+//                 console.log(err);
+//                 reject(err);
+//             } else {
+//                 fsExtra.writeFile(
+//                     path.resolve(clientConfig.output.path, 'file-names.json'),
+//                     JSON.stringify(stats.toJson().assetsByChunkName),
+//                     (writeFileErr) => {
+//                         if (writeFileErr) {
+//                             console.log(writeFileErr);
+//                             reject(writeFileErr);
+//                         } else {
+//                             console.log('done');
+//                             console.log(stats);
+//                             resolve();
+//                         }
+//                     }
+//                 );
+//             }
+//         });
+//     });
+// }
+webpack(clientConfig, () => console.log('done'));
+// compileClientWithWebpack();
